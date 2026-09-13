@@ -1,4 +1,4 @@
-import { lazy, PropsWithChildren, Suspense, useEffect, useState } from "react";
+import { lazy, PropsWithChildren, Suspense, useEffect, useRef, useState } from "react";
 import About from "./About";
 import Career from "./Career";
 import Contact from "./Contact";
@@ -13,21 +13,33 @@ import setSplitText from "./utils/splitText";
 const TechStack = lazy(() => import("./TechStack"));
 
 const MainContainer = ({ children }: PropsWithChildren) => {
+  const resizeFrame = useRef<number | null>(null);
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
     window.innerWidth > 1024
   );
 
   useEffect(() => {
     const resizeHandler = () => {
-      setSplitText();
-      setIsDesktopView(window.innerWidth > 1024);
+      if (resizeFrame.current !== null) {
+        cancelAnimationFrame(resizeFrame.current);
+      }
+      resizeFrame.current = requestAnimationFrame(() => {
+        setSplitText();
+        setIsDesktopView(window.innerWidth > 1024);
+      });
     };
     resizeHandler();
     window.addEventListener("resize", resizeHandler);
     return () => {
       window.removeEventListener("resize", resizeHandler);
     };
-  }, [isDesktopView]);
+    return () => {
+      if (resizeFrame.current !== null) {
+        cancelAnimationFrame(resizeFrame.current);
+      }
+      window.removeEventListener("resize", resizeHandler);
+    };
+  }, []);
 
   return (
     <div className="container-main">

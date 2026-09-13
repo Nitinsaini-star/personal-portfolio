@@ -20,7 +20,7 @@ const Work = () => {
   ];
 
   useLayoutEffect(() => {
-  let translateX: number = 0;
+  let translateX = 0;
 
   function setTranslateX() {
     const box = document.getElementsByClassName("work-box");
@@ -36,6 +36,7 @@ const Work = () => {
 
   setTranslateX();
 
+  const context = gsap.context(() => {
   const timeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".work-section",
@@ -51,10 +52,11 @@ const Work = () => {
     x: -translateX,
     ease: "none",
   });
+  }, document.querySelector(".work-section") ?? undefined);
 
   // Clean up (optional, good practice)
   return () => {
-    timeline.kill();
+    context.revert();
     ScrollTrigger.getById("work")?.kill();
   };
   }, []);

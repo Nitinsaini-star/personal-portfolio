@@ -10,20 +10,31 @@ gsap.registerPlugin(ScrollTrigger);
 const Navbar = () => {
   useEffect(() => {
     const links = document.querySelectorAll(".header ul a");
+    const linkHandlers: Array<{
+      element: HTMLAnchorElement;
+      handler: (event: MouseEvent) => void;
+    }> = [];
     links.forEach((elem) => {
       const element = elem as HTMLAnchorElement;
-      element.addEventListener("click", (e) => {
+      const handler = (e: MouseEvent) => {
         if (window.innerWidth > 1024) {
           e.preventDefault();
           const target = (e.currentTarget as HTMLAnchorElement).getAttribute("data-href");
           const section = target ? document.querySelector(target) : null;
           section?.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-      });
+      };
+      element.addEventListener("click", handler);
+      linkHandlers.push({ element, handler });
     });
     const handleResize = () => ScrollTrigger.refresh();
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      linkHandlers.forEach(({ element, handler }) => {
+        element.removeEventListener("click", handler);
+      });
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
   return (
     <>
