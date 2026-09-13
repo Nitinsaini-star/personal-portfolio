@@ -18,18 +18,8 @@ Please do NOT:
 If you use parts of the code, you must provide proper credit linking back to the original repository.
 Build your own version — don’t just copy.
 
-— Moncy Yohannan
+— Nitin Saini
 
----
-
-## 🛠️ Instructions
-
-The project uses the standard GSAP package and ScrollTrigger-compatible animations.
-
-For official GSAP Club plugins, refer here:  
-https://gsap.com/docs/v3/Installation/
-
----
 
 ## ⚙️ Tech Stack
 
@@ -48,16 +38,3 @@ However:
 - It is not open source and not available for reuse
 
 Any usage, extraction, or redistribution of that avatar from my live website is strictly prohibited.
-
----
-
-![Protfolio-Preview](https://github.com/user-attachments/assets/3c4557e7-6392-4928-b8a9-7b2476ef4edd)
-
----
-
-## 📄 License
-
-This project is licensed under the Personal Portfolio License (PPL) v1.0.
-
-See the LICENSE file for full details
-
