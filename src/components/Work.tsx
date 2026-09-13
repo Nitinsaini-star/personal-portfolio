@@ -12,6 +12,10 @@ const Work = () => {
     "/images/ai-llm-chatbot.svg",
     "/images/ecommerce-website.svg",
     "/images/blog-application.svg",
+    "/images/examly-online-examination.svg",
+    "/images/markethub-multi-vendor.svg",
+    "/images/cafe-website.svg",
+    "/images/driveease-car-rental.svg",
   ];
 
   return (
