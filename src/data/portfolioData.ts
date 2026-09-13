@@ -58,7 +58,7 @@ export const PROFILE = {
   email: "nitinisaini2005@gmail.com",
   github: "https://github.com/Nitinsaini-star",
   githubUsername: "Nitinsaini-star",
-  linkedin: "https://www.linkedin.com/in/nitinsaini",
+  linkedin: "https://www.linkedin.com/in/nitin-saini-a78810257/",
   statement: "I build interfaces, systems and experiences that people remember.",
   bio: "BCA Full Stack Development student focused on building modern web applications, interactive experiences and practical software products. Merging robust software engineering with high-touch creative interactivity.",
   currentFocus: "High-performance full-stack architectures, interactive 3D web interfaces, and modern scalable web ecosystems.",
