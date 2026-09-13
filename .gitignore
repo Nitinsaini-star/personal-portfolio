@@ -7,7 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+node_modules/
 dist
 dist-ssr
 *.local
@@ -26,6 +26,8 @@ dist-ssr
 
 backup/
 .env
+.env.local
+.env.*.local
 
 # The local GLB is an unavailable Git LFS pointer in this checkout.
 public/models/character.glb
