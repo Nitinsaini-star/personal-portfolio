@@ -1,11 +1,6 @@
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useLayoutEffect } from "react";
 import { PROJECTS } from "../data/portfolioData";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Work = () => {
   const projectImages = [
@@ -19,47 +14,6 @@ const Work = () => {
     "/images/blog-application.svg",
   ];
 
-  useLayoutEffect(() => {
-  let translateX = 0;
-
-  function setTranslateX() {
-    const box = document.getElementsByClassName("work-box");
-    const rectLeft = document
-      .querySelector(".work-container")!
-      .getBoundingClientRect().left;
-    const rect = box[0].getBoundingClientRect();
-    const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-    const padding: number =
-      parseInt(window.getComputedStyle(box[0]).padding) / 2;
-    translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
-  }
-
-  setTranslateX();
-
-  const context = gsap.context(() => {
-  const timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".work-section",
-      start: "top top",
-      end: `+=${translateX}`, // Use actual scroll width
-      scrub: true,
-      pin: true,
-      id: "work",
-    },
-  });
-
-  timeline.to(".work-flex", {
-    x: -translateX,
-    ease: "none",
-  });
-  }, document.querySelector(".work-section") ?? undefined);
-
-  // Clean up (optional, good practice)
-  return () => {
-    context.revert();
-    ScrollTrigger.getById("work")?.kill();
-  };
-  }, []);
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">

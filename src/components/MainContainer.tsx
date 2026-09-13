@@ -31,9 +31,6 @@ const MainContainer = ({ children }: PropsWithChildren) => {
     resizeHandler();
     window.addEventListener("resize", resizeHandler);
     return () => {
-      window.removeEventListener("resize", resizeHandler);
-    };
-    return () => {
       if (resizeFrame.current !== null) {
         cancelAnimationFrame(resizeFrame.current);
       }
